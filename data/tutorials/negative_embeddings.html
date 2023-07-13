@@ -1,0 +1,176 @@
+<!--
+title: Negative Embeddings
+description: Tutorial on Negative Embeddings
+published: true
+date: 2023-06-24T22:44:54.130Z
+tags: 
+editor: ckeditor
+dateCreated: 2023-05-29T04:38:07.371Z
+-->
+
+<h2 style="text-align:center;"><i><strong>Negative Embeddings</strong></i></h2>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><strong>What is a Negative Embedding?</strong></h3>
+<p>Negative embeddings are used in the negative prompt field, but they are actually trained models created from images. Bad images. Images of things you want to avoid, like mangled arms and extra fingers.</p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><strong>How do I use them?</strong></h3>
+<p>The negative embeddings we’ve added to MonAI are all listed in a separate section under the suggested negative prompts. That way, you can see which ones are available and just tap on one (or more) to add them to the negative prompt field.</p>
+<p>Negative embeddings often have some impact on aesthetics - composition, color - but they are mainly used for human anatomy. If you are trying to generate an animal, you may be better off <strong>without</strong>&nbsp;a negative embedding.</p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><strong>Which Negative Embedding should I use?</strong></h3>
+<p>Some negative embeddings are geared towards anime, while others are designed for photorealism. Some are made to go with specific AI models. You can use an anime negative embedding with a photorealistic AI model, but the results MIGHT have more defined lines (like anime) and look less photorealistic. All the negative embeddings seem to work well with anime.</p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><strong>What’s up with the tokens?</strong></h3>
+<p>In theory, the negative prompt field allows 75 tokens. This is illustrated in characters (0/300) and it does not translate for negative embeddings. <strong>easynegative</strong>&nbsp;only uses 2 tokens, but <strong>ng_deepnegative_v1_75t</strong>&nbsp;uses all 75. This means, if you use <strong>ng_deepnegative_v1_75t</strong>&nbsp;and then type a bunch of other negative prompts behind it, the other negative prompts <i>should be</i>&nbsp;ignored.</p>
+<p>In practice, this just isn’t so. You can use <strong>ng_deepnegative_v1_75t </strong>and then add more negative prompts behind it - even other large negative embeddings behind it - and they are still “heard” by the AI.</p>
+<p>But the cut-off must be somewhere, and you’ll get there faster with high-token negative embeddings than you would with low-token ones. Don’t let that discourage you from using high-token negative embeddings. They are bigger because they are more powerful and possibly more effective.</p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><strong>What’s with all the Unspeakable Horrors?</strong></h3>
+<p>The v stands for vector. The higher the number, the more powerful it is, and the more tokens it uses. Does that mean it’s better? I’ve gotten better results with 24v and 32v, but 64v is also popular.</p>
+<p>The lower vector versions are better for photorealistic images and for AI models that already produce high-quality results. The higher vector versions tend to change the image style significantly. Still, they can achieve outstanding results.</p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;">Negative Embeddings Chart</h3>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">
+          <p style="text-align:center;"><strong>Negative Embedding</strong></p>
+        </td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">
+          <p style="text-align:center;"><strong>Specialty</strong></p>
+        </td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">
+          <p style="text-align:center;"><strong>Tokens</strong></p>
+        </td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">
+          <p style="text-align:center;"><strong>Note</strong></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">easynegative</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Anime</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">2</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">More muted colors</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">ng_deepnegative_v1_75t</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Anime</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">75</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">More vibrant colors</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">Unspeakable-Horrors-16v</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Photorealism</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">16</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">Unspeakable-Horrors-24v</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Photorealism</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">24</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Recommended for Deliberate and Realistic Vision</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">Unspeakable-Horrors-32v</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Photorealism</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">32</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Recommended for Deliberate and Realistic Vision</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">Unspeakable-Horrors-48v</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Photorealism</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">48</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">Unspeakable-Horrors-64v</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Photorealism</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">64</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">bad-artist</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Universal</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">2</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Suggest adding “sketch” “painting” or “photo” in front of, as in “photo by bad-artist”</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">bad-artist-anime</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Anime</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">2</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Suggest adding “sketch” or “drawing” in front of, as in “sketch by bad artist-anime”</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">badhandv4</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Hands</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">4</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">negative_hand-neg</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Hands</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">8</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">bad_prompt_version2-neg</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Anime</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">8</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Popular for anatomy and hands</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">verybadimagenegative_v1.3</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Anime</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">12</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Popular for anatomy and hands</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">beauty512</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Universal</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">6</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">FastNegativeEmbedding</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Universal</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">52</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">FastNegativeEmbeddingStrong</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Universal</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">52</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">bad-picture-chill-75v</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Universal</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">9</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">realisticvision-negative-embedding</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">Realistic Vision 2</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">75</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">BadDream</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">DreamShaper 6</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">69</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Made for “DreamShaper style”</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:180pt;" colspan="1" rowspan="1">UnrealisticDream</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:95.2pt;" colspan="1" rowspan="1">DreamShaper 6</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:53.2pt;" colspan="1" rowspan="1">37</td>
+        <td style="border-bottom:1pt solid rgb(0, 0, 0);border-left:1pt solid rgb(0, 0, 0);border-right:1pt solid rgb(0, 0, 0);border-top:1pt solid rgb(0, 0, 0);padding:5pt;vertical-align:top;width:177pt;" colspan="1" rowspan="1">Made for realistic images</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

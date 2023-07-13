@@ -1,0 +1,82 @@
+<!--
+title: Prompt Weighting
+description: Prompt Weighting Tutorial
+published: true
+date: 2023-06-28T19:41:25.751Z
+tags: tutorial
+editor: ckeditor
+dateCreated: 2023-06-23T21:30:59.574Z
+-->
+
+<h2 style="text-align:center;"><span class="text-big"><i>Prompt Weighting</i></span></h2>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><span class="text-big">What is prompt weighting?</span></h3>
+<p><strong>Sometimes the AI will ignore parts of your prompt. Prompt weighting is a powerful tool that allows you to add weight or importance to a word or words in your prompt that may otherwise be ignored.&nbsp;</strong></p>
+<p><strong>Here's an example where I wanted to create a mosaic design:</strong></p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <figure class="image image_resized" style="width:100%;"><img src="/giant_pink_robot_7ba13.jpg"></figure>
+        </td>
+        <td>
+          <figure class="image image_resized" style="width:100%;"><img src="/giant_pink_robot_9b15c.jpg"></figure>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>Prompt:</strong><br>giant pint robot in the ocean, surrounded by ocean waves, mosaic art</td>
+        <td><strong>Prompt:</strong><br>giant pink robot in the ocean, surrounded by ocean waves, (mosaic art:1.3)</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p><strong>In the example on the left, the AI gave the robot a subtle mosaic texture, but there is no mosaic in the background. Once I added prompt weighting, as shown in the example on the right, the AI created a true mosaic design.</strong></p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><span class="text-big">How does prompt weighting work?</span></h3>
+<p><strong>Put the word or words you want to weight inside a parenthesis, followed by a colon and a number, like this:</strong></p>
+<p>Beautiful woman in a rose garden, wearing a (purple lace dress:1.2), holding a (basket of red roses:1.3)&nbsp;</p>
+<p><strong>The greater the number, the greater the weight. You can go all the way up to 1.9, but no higher! If you want to reduce the weight of a term, you can use a smaller number, like this:&nbsp;</strong></p>
+<p>Beautiful woman in a rose garden, at night, (eerie:0.8), insane details, realistic, (dark:1.4)&nbsp;</p>
+<p><strong>In this case, I wanted just a hint of eeriness, but more than none.&nbsp;</strong></p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><span class="text-big">Is there another way to do prompt weighting?</span></h3>
+<p><strong>Yes. You can also increase or decrease the weight of a term by adding plusses or minuses, like this:</strong></p>
+<p>Beautiful woman in a rose garden, wearing a (purple lace dress)++,&nbsp;at night, eerie--, dark++++</p>
+<p><strong>+ is equivalent to 1.1; however, ++ is 1.1 x 1.1 or 1.21, which is not exactly the same as 1.2&nbsp;</strong><br><strong>Similarly, – is 0.9 x 0.9 which is 0.81&nbsp;</strong><br><strong>Ergo, the plus/minus method will give slightly different results than the numeric method, UNLESS you used multiple decimal places.</strong></p>
+<p>&nbsp;</p>
+<h3 style="text-align:center;"><span class="text-big">Can I use multiple decimal places?</span></h3>
+<p><strong>Yes.&nbsp;</strong></p>
+<p>Beautiful woman in a rose garden, wearing a (purple lace dress:1.21),&nbsp;at night, (eerie:0.81), (dark:1.4641)</p>
+<p style="text-align:justify;"><strong>Will give the exact same result as the plus/minus example I used above.</strong></p>
+<p style="text-align:justify;">&nbsp;</p>
+<h3 style="text-align:center;"><span class="text-big">What about parentheses and square brackets?</span></h3>
+<p><strong>Putting something in parentheses has the same effect as weighting 1.1. Putting something in square brackets has the same effect as weighting 0.9.</strong><br>&nbsp;</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>These all add .1</strong></td>
+        <td><strong>These all subtract .1</strong></td>
+      </tr>
+      <tr>
+        <td>
+          <p>Woman in a (purple dress:1.1) &nbsp; &nbsp;</p>
+          <p>Woman in a (purple dress)+</p>
+          <p>Woman in a (purple dress)<br>&nbsp;</p>
+        </td>
+        <td>
+          <p>Woman in a (purple dress:0.9) &nbsp; &nbsp;</p>
+          <p>Woman in a (purple dress)-</p>
+          <p>Woman in a [purple dress]<br>&nbsp;</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p style="text-align:justify;"><mark class="marker-yellow"><strong>More than 2 nested parentheses will be ignored. More than 1 set of square brackets will be ignored.&nbsp;</strong></mark></p>
+<p style="text-align:justify;">&nbsp;</p>
+<h3 style="text-align:center;"><span class="text-big">What are nested parentheses?</span></h3>
+<p><strong>Nested parentheses are parentheses inside parentheses, like this ((purple dress)). This is not a recommended way to prompt. However, it can be useful for separating features of two characters, like this:</strong></p>
+<p style="text-align:justify;">2 girls A and B, (A girl has blonde hair, (a red dress:1.4), (pink bow in her hair:1.2)), (B girl has black hair, (a yellow shirt and denim shorts:1.3)), hugging</p>
+<p style="text-align:justify;"><strong>In this case, the nested parentheses help to keep the description of the first character separate from that of the second character.</strong></p>

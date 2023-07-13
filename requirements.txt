@@ -1,0 +1,9 @@
+python_dotenv
+langchain
+openai
+chainlit
+chromadb
+tiktoken
+lxml
+llama_index
+html2text
