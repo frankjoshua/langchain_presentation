@@ -41,23 +41,30 @@ except:
     index = GPTVectorStoreIndex.from_documents(documents)
     index.storage_context.persist()
 
+from llama_index.llms import OpenAI
+
+from llama_index.prompts import Prompt
 
 @cl.llama_index_factory
 async def factory():
-    llm_predictor = LLMPredictor(
-        llm=ChatOpenAI(
-            temperature=0,
-            model_name="gpt-3.5-turbo",
-            streaming=STREAMING,
-        ),
-    )
+    template = (
+    "We have provided context information below. \n"
+    "---------------------\n"
+    "{context_str}"
+    "\n---------------------\n"
+    "Given this information, please answer the question: {query_str}\n"
+)
+    qa_template = Prompt(template)
+    llm = OpenAI(temperature=0, model="gpt-3.5-turbo")
     service_context = ServiceContext.from_defaults(
-        llm_predictor=llm_predictor,
+        llm=llm,
         chunk_size=512,
         callback_manager=CallbackManager([cl.LlamaIndexCallbackHandler()]),
     )
 
     query_engine = index.as_query_engine(
+        text_qa_template=qa_template,
+        refine_template=qa_template,
         service_context=service_context,
         streaming=STREAMING,
     )

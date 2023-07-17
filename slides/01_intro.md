@@ -21,3 +21,6 @@ Data Indexing: LlamaIndex can store and index your data for different use cases.
 Query Interface: LlamaIndex provides a query interface that accepts any input prompt over your data and returns a knowledge-augmented response.
 
 This makes LlamaIndex a simple and flexible tool for enhancing the capabilities of LLM applications by integrating them with custom data sources.
+---
+---
+https://integrations.langchain.com/

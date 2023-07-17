@@ -92,6 +92,7 @@ async def init():
 
 @cl.langchain_postprocess
 async def process_response(res):
+    await cl.Message(content=str(res)).send()
     answer = res["answer"]
     sources = res["sources"].strip()
     source_elements = []
