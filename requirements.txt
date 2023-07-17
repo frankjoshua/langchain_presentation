@@ -7,3 +7,4 @@ tiktoken
 lxml
 llama_index
 html2text
+unstructured

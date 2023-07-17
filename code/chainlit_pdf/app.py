@@ -1,5 +1,5 @@
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.document_loaders import UnstructuredPDFLoader
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.chat_models import ChatOpenAI
@@ -18,27 +18,28 @@ if os.getenv("OPENAI_API_KEY") is None:
     if not load_dotenv(find_dotenv()):
         raise Exception(".env not found and OPENAI_API_KEY not set") 
 
-# system_template = """Use the following pieces of context to answer the users question.
-# If you don't know the answer, just say that you don't know, don't try to make up an answer.
-# ALWAYS return a "SOURCES" part in your answer.
-# The "SOURCES" part should be a reference to the source of the document from which you got your answer.
+system_template = """Use the following pieces of context to answer the users question.
+If you don't know the answer, just say that you don't know, don't try to make up an answer.
+ALWAYS return a "SOURCES" part in your answer.
+The "SOURCES" part should be a reference to the source of the document from which you got your answer.
 
-# Example of your response should be:
+Example of your response should be:
 
-# ```
-# The answer is foo
-# SOURCES: xyz
-# ```
+```
+The answer is foo
+SOURCES: xyz
+```
 
-# Begin!
-# ----------------
-# {summaries}"""
-# messages = [
-#     SystemMessagePromptTemplate.from_template(system_template),
-#     HumanMessagePromptTemplate.from_template("{question}"),
-# ]
-# prompt = ChatPromptTemplate.from_messages(messages)
-# chain_type_kwargs = {"prompt": prompt}
+Begin!
+----------------
+{summaries}"""
+messages = [
+    SystemMessagePromptTemplate.from_template(system_template),
+    HumanMessagePromptTemplate.from_template("{question}"),
+]
+prompt = ChatPromptTemplate.from_messages(messages)
+chain_type_kwargs = {"prompt": prompt}
+
 
 @cl.langchain_factory(use_async=True)
 async def init():
@@ -47,40 +48,49 @@ async def init():
     # Wait for the user to upload a file
     while files == None:
         files = await cl.AskFileMessage(
-            content="Please upload a text file to begin!", accept=["text/plain"]
+            content="Please upload a text file to begin!", accept=["application/pdf"]
         ).send()
 
     file = files[0]
 
     msg = cl.Message(content=f"Processing `{file.name}`...")
     await msg.send()
+    
+    # Open the file in write binary mode ('wb')
+    with open("./tmp.pdf", "wb") as file_obj:
+        file_obj.write(file.content)
 
-    # Decode the file
-    text = file.content.decode("utf-8")
+    # Load the PDF
+    loader = UnstructuredPDFLoader(
+        "./tmp.pdf", mode="elements", strategy="fast",
+    )
+    docs = loader.load()
 
-    # Split the text into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    texts = text_splitter.split_text(text)
+    print(docs[0])
 
-    # Create a metadata for each chunk
-    metadatas = [{"source": f"{i}-pl"} for i in range(len(texts))]
+    for doc in docs:
+        print(str(doc))
+        doc.page_content = doc.page_content
+        doc.metadata = {"source": doc.metadata["page_number"]}
+
+    metadatas = [{"source": f"{i}-pl"} for i in range(len(docs))]
 
     # Create a Chroma vector store
     embeddings = OpenAIEmbeddings()
-    docsearch = await cl.make_async(Chroma.from_texts)(
-        texts, embeddings, metadatas=metadatas
+    docsearch = await cl.make_async(Chroma.from_documents)(
+        documents=docs, embedding=embeddings
     )
     # Create a chain that uses the Chroma vector store
     chain = RetrievalQAWithSourcesChain.from_chain_type(
         ChatOpenAI(temperature=0),
         chain_type="stuff",
         retriever=docsearch.as_retriever(),
-        # chain_type_kwargs=chain_type_kwargs
+        chain_type_kwargs=chain_type_kwargs
     )
 
     # Save the metadata and texts in the user session
     cl.user_session.set("metadatas", metadatas)
-    cl.user_session.set("texts", texts)
+    cl.user_session.set("texts", docs)
 
     # Let the user know that the system is ready
     await msg.update(content=f"`{file.name}` processed. You can now ask questions!")

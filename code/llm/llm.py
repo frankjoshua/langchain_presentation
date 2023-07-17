@@ -8,5 +8,5 @@ if os.getenv("OPENAI_API_KEY") is None:
 from langchain.llms import OpenAI
 
 llm = OpenAI(temperature=0.9)
-prediction = llm.predict("What would be a good title for an AI presentation on Large Langauge Models?")
+prediction = llm.predict("What would be a good title for an AI presentation on Langchain?")
 print(prediction)

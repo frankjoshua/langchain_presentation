@@ -8,8 +8,6 @@ from langchain.chains import ConversationChain
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 
-
-
 def getBot():
     prompt = ChatPromptTemplate.from_messages([
         SystemMessagePromptTemplate.from_template(
@@ -23,8 +21,8 @@ def getBot():
 
     llm = ChatOpenAI(temperature=0)
     memory = ConversationBufferMemory(return_messages=True)
-    conversation = ConversationChain(memory=memory, prompt=prompt, llm=llm)
-    return conversation
+    conversation_chain = ConversationChain(memory=memory, prompt=prompt, llm=llm)
+    return conversation_chain
 
 async def onMessage(message, callback):
     await callback("Thinking...")
