@@ -18,27 +18,27 @@ if os.getenv("OPENAI_API_KEY") is None:
     if not load_dotenv(find_dotenv()):
         raise Exception(".env not found and OPENAI_API_KEY not set") 
 
-# system_template = """Use the following pieces of context to answer the users question.
-# If you don't know the answer, just say that you don't know, don't try to make up an answer.
-# ALWAYS return a "SOURCES" part in your answer.
-# The "SOURCES" part should be a reference to the source of the document from which you got your answer.
+system_template = """Use the following pieces of context to answer the users question.
+If you don't know the answer, just say that you don't know, don't try to make up an answer.
+ALWAYS return a "SOURCES" part in your answer.
+The "SOURCES" part should be a reference to the source of the document from which you got your answer.
 
-# Example of your response should be:
+Example of your response should be:
 
-# ```
-# The answer is foo
-# SOURCES: xyz
-# ```
+```
+The answer is foo
+SOURCES: xyz
+```
 
-# Begin!
-# ----------------
-# {summaries}"""
-# messages = [
-#     SystemMessagePromptTemplate.from_template(system_template),
-#     HumanMessagePromptTemplate.from_template("{question}"),
-# ]
-# prompt = ChatPromptTemplate.from_messages(messages)
-# chain_type_kwargs = {"prompt": prompt}
+Begin!
+----------------
+{summaries}"""
+messages = [
+    SystemMessagePromptTemplate.from_template(system_template),
+    HumanMessagePromptTemplate.from_template("{question}"),
+]
+prompt = ChatPromptTemplate.from_messages(messages)
+chain_type_kwargs = {"prompt": prompt}
 
 @cl.langchain_factory(use_async=True)
 async def init():
@@ -75,7 +75,7 @@ async def init():
         ChatOpenAI(temperature=0),
         chain_type="stuff",
         retriever=docsearch.as_retriever(),
-        # chain_type_kwargs=chain_type_kwargs
+        chain_type_kwargs=chain_type_kwargs
     )
 
     # Save the metadata and texts in the user session
